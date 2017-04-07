@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/icon_medium_profile_height">
+
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="@dimen/icon_small_profile_height"
+        android:layout_height="@dimen/icon_small_profile_height"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/txtLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:text="TextView"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:text="TextView"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/imgIcon"
+        android:layout_toEndOf="@+id/imgIcon" />
+
+    <TextView
+        android:id="@+id/txtShard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="(LAS)"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_summoner_level"
+        android:layout_alignBaseline="@+id/txtLevel"
+        android:layout_alignBottom="@+id/txtLevel"
+        android:layout_toLeftOf="@+id/txtLevel"
+        android:layout_toStartOf="@+id/txtLevel"
+        android:layout_marginRight="12dp"
+        android:layout_marginEnd="12dp" />
+
+    <TextView
+        android:id="@+id/txtSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_selected"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="10sp"
+        android:layout_alignTop="@+id/txtShard"
+        android:layout_alignLeft="@+id/txtName"
+        android:layout_alignStart="@+id/txtName"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp"/>
+</RelativeLayout>

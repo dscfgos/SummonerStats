@@ -8,12 +8,12 @@ import java.util.List;
 
 public class Shard 
 {
-    private String hostname ;
-    private List<String> locales ;
-    private String name ;
-    private long revisionDate ;
-    private String region_tag ;
-    private String slug ;
+    private int				id;
+    private String       	hostname;
+    private List<Locales> 	locales;
+    private String       	name;
+    private String       	region_tag;
+    private String      	slug;
 
     public String getHostname() {
         return hostname;
@@ -23,11 +23,11 @@ public class Shard
         this.hostname = hostname;
     }
 
-    public List<String> getLocales() {
+    public List<Locales> getLocales() {
         return locales;
     }
 
-    public void setLocales(List<String> locales) {
+    public void setLocales(List<Locales> locales) {
         this.locales = locales;
     }
 
@@ -37,14 +37,6 @@ public class Shard
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public long getRevisionDate() {
-        return revisionDate;
-    }
-
-    public void setRevisionDate(long revisionDate) {
-        this.revisionDate = revisionDate;
     }
 
     public String getRegion_tag() {
@@ -63,8 +55,17 @@ public class Shard
         this.slug = slug;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     @Override
     public String toString() {
         return name ;
     }
+
+
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Summoner Stats</string>
+    <string name="navigation_drawer_close">Cerrar</string>
+    <string name="navigation_drawer_open">Abrir</string>
+    <string name="str_accounts_manager">Administrar Cuentas</string>
+    <string name="title_activity_list_accounts">Seleccionar Cuenta</string>
+    <string name="title_activity_add_account">Añadir Cuenta</string>
+    <string name="str_summoner_level">Nivel</string>
+    <string name="str_add_account">Añadir Cuenta</string>
+    <string name="str_region">Region :</string>
+    <string name="str_summoner_field">Invocador :</string>
+    <string name="str_date">Fecha Modificación</string>
+    <string name="str_selected">(*seleccionada*)</string>
+    <string name="str_is_summoner_selected">No puede eliminar la cuenta Seleccionada</string>
+    <string name="SM_001">El Nombre del Invocador no existe.</string>
+    <string name="err_account_needed">Debe introducir una cuenta.</string>
+    <string name="err_updating_account">Error Actualizando.</string>
+    <string name="str_summoner_updated">Cuenta actualizada.</string>
+    <string name="str_summoner_deleted">Cuenta Eliminada</string>
+    <string name="str_history_title">Historial Partidas</string>
+    <string name="str_unranked">Unranked</string>
+    <string name="str_bronze">Bronce</string>
+    <string name="str_challenger">Challenger</string>
+    <string name="str_diamond">Diamante</string>
+    <string name="str_gold">Oro</string>
+    <string name="str_master">Master</string>
+    <string name="str_platinum">Platino</string>
+    <string name="str_silver">Plata</string>
+    <string name="str_league_points">Puntos Liga</string>
+    <string name="str_losses">Derrota</string>
+    <string name="str_wins">Victorias</string>
+    <string name="str_history">Historial</string>
+    <string name="str_my_league">Mi Liga</string>
+    <string name="locale">es_ES</string>
+    <string name="str_current_game">Partida Actual</string>
+    <string name="str_assists">Asistencias</string>
+    <string name="str_deaths">Muertes</string>
+    <string name="str_kills">Asesinatos</string>
+    <string name="str_defeated">Derrota</string>
+    <string name="str_win">Victoria</string>
+    <string name="str_map8">La Cicatriz de Cristal</string>
+    <string name="str_map10">El Bosque Retorcido</string>
+    <string name="str_map11">Grieta del Invocador</string>
+    <string name="str_map12">Abismo de los Lamentos</string>
+    <string name="str_map14">El Puente del Carnicero</string>
+    <string name="str_mapUnknow">Mapa Desconocido</string>
+    <string name="str_blue_team">Equipo Azul</string>
+    <string name="str_red_team">Equipo Rojo</string>
+
+</resources>
