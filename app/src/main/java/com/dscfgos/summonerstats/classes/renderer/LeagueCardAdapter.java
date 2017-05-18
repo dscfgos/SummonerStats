@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.dscfgos.summonerstats.R;
 import com.dscfgos.summonerstats.classes.utils.LeagueUtils;
 import com.dscfgos.summonerstats.dtos.League;
-import com.dscfgos.summonerstats.dtos.LeagueEntry;
+import com.dscfgos.summonerstats.dtos.LeaguePosition;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class LeagueCardAdapter extends RecyclerView.Adapter<LeagueCardAdapter.DataHolder>
 {
-    private List<League> leagueList ;
+    private List<LeaguePosition> leagueList ;
     private Context context;
 
     public class DataHolder extends RecyclerView.ViewHolder
@@ -45,7 +45,7 @@ public class LeagueCardAdapter extends RecyclerView.Adapter<LeagueCardAdapter.Da
         }
     }
 
-    public LeagueCardAdapter(Context context, List<League> leagueList) {
+    public LeagueCardAdapter(Context context, List<LeaguePosition> leagueList) {
         this.context = context;
         this.leagueList = leagueList;
     }
@@ -62,19 +62,18 @@ public class LeagueCardAdapter extends RecyclerView.Adapter<LeagueCardAdapter.Da
     public void onBindViewHolder(DataHolder holder, int position)
     {
 
-        League league = leagueList.get(position);
-        LeagueEntry leagueEntry = league.getEntries().get(0);
+        LeaguePosition league = leagueList.get(position);
 
-        String tier = context.getResources().getString(LeagueUtils.getTierNameId(league.getTier())) + " " + leagueEntry.getDivision();
-        int winratio = leagueEntry.getWins()*100/(leagueEntry.getWins()+leagueEntry.getLosses());
-        holder.txtQueueType.setText(league.getQueue().getDescription());
-        holder.txtLeagueUser.setText(leagueEntry.getPlayerOrTeamName());
+        String tier = context.getResources().getString(LeagueUtils.getTierNameId(league.getTier())) + " " + league.getRank();
+        int winratio = league.getWins()*100/(league.getWins()+ league.getLosses());
+        holder.txtQueueType.setText(league.getQueueType());
+        holder.txtLeagueUser.setText(league.getPlayerOrTeamName());
         holder.txtTierRank.setText(tier);
-        holder.txtLeagueWins.setText(String.valueOf(leagueEntry.getWins()));
-        holder.txtLeagueLosses.setText(String.valueOf(leagueEntry.getLosses()));
-        holder.txtLeaguePoints.setText(String.valueOf(leagueEntry.getLeaguePoints()));
+        holder.txtLeagueWins.setText(String.valueOf(league.getWins()));
+        holder.txtLeagueLosses.setText(String.valueOf(league.getLosses()));
+        holder.txtLeaguePoints.setText(String.valueOf(league.getLeaguePoints()));
         holder.txtWinRatio.setText(String.valueOf(winratio) + "%");
-        holder.imgTierRank.setImageResource(LeagueUtils.getTierResourceId(league.getTier(),leagueEntry.getDivision()));
+        holder.imgTierRank.setImageResource(LeagueUtils.getTierResourceId(league.getTier(), league.getRank()));
 }
 
     @Override

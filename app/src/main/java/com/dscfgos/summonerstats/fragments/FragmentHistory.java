@@ -10,31 +10,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.dscfgos.messaging.DSMessage;
 import com.dscfgos.messaging.MessageProcessor;
 import com.dscfgos.messaging.MessagingManager;
 import com.dscfgos.summonerstats.R;
-import com.dscfgos.summonerstats.classes.renderer.LeagueCardAdapter;
 import com.dscfgos.summonerstats.classes.renderer.RecentGamesCardAdapter;
 import com.dscfgos.summonerstats.constants.AppConstants;
 import com.dscfgos.summonerstats.constants.DSMessageTypes;
 import com.dscfgos.summonerstats.constants.ErrorsCode;
-import com.dscfgos.summonerstats.dtos.GameDTO;
-import com.dscfgos.summonerstats.dtos.League;
-import com.dscfgos.summonerstats.dtos.RecentGamesResult;
+import com.dscfgos.summonerstats.dtos.GamesHistoryResult;
+import com.dscfgos.summonerstats.dtos.HistoryGameDataDTO;
 import com.dscfgos.summonerstats.dtos.Summoner;
-import com.dscfgos.summonerstats.interfaces.RecentGamesResponseListener;
-import com.dscfgos.summonerstats.rest_client.CurrentGameManager;
-import com.dscfgos.summonerstats.rest_client.RecentGamesManager;
+import com.dscfgos.summonerstats.interfaces.GamesHistoryResponseListener;
+import com.dscfgos.summonerstats.rest_client.GamesHistoryManager;
 import com.dscfgos.utils.SharedPreferenceManager;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-public class HistoryFragment extends Fragment implements RecentGamesResponseListener, MessageProcessor
+public class FragmentHistory extends Fragment implements GamesHistoryResponseListener, MessageProcessor
 {
     private OnFragmentInteractionListener mListener;
     private View            view            = null;
@@ -42,10 +36,10 @@ public class HistoryFragment extends Fragment implements RecentGamesResponseList
     private RelativeLayout waiting = null;
     private Summoner summoner = null;
 
-    public HistoryFragment() {}
+    public FragmentHistory() {}
 
-    public static HistoryFragment newInstance() {
-        HistoryFragment fragment = new HistoryFragment();
+    public static FragmentHistory newInstance() {
+        FragmentHistory fragment = new FragmentHistory();
         return fragment;
     }
 
@@ -92,17 +86,16 @@ public class HistoryFragment extends Fragment implements RecentGamesResponseList
         mListener = null;
     }
 
+
     @Override
-    public void getRecentGames(RecentGamesResult recentGamesResult)
+    public void getGamesHistory(GamesHistoryResult recentGamesResult)
     {
         String resultCode = recentGamesResult.getResultCode();
         if(resultCode.equals(ErrorsCode.NO_ERRORS))
         {
-            Set<GameDTO> gameSet = recentGamesResult.getRecentGames().getGames();
-            if(gameSet != null && gameSet.size() > 0)
+            List<HistoryGameDataDTO> gameList = recentGamesResult.getHistoryGameDataList();
+            if(gameList != null && gameList.size() > 0)
             {
-                List<GameDTO> gameList = new ArrayList<>(gameSet);
-
                 RecentGamesCardAdapter adapter = new RecentGamesCardAdapter(this.getContext(),gameList);
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
                 rcyRecentGames.setLayoutManager(mLayoutManager);
@@ -134,6 +127,8 @@ public class HistoryFragment extends Fragment implements RecentGamesResponseList
         }
     }
 
+
+
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
@@ -147,11 +142,11 @@ public class HistoryFragment extends Fragment implements RecentGamesResponseList
         if(summoner != null)
         {
             String  shard       = String.valueOf(summoner.getShardid());
-            String  summonerid  = String.valueOf(summoner.getId());
+            String  accountId  = String.valueOf(summoner.getAccountId());
             String  locale      = view.getResources().getString(R.string.locale);
 
-            RecentGamesManager recentGamesTask = new RecentGamesManager(this);
-            recentGamesTask.execute(RecentGamesManager.GET_RECENT_GAMES,shard,summonerid,locale);
+            GamesHistoryManager recentGamesTask = new GamesHistoryManager(this);
+            recentGamesTask.execute(GamesHistoryManager.GET_RECENT_GAMES,shard,accountId,locale);
         }
     }
 }

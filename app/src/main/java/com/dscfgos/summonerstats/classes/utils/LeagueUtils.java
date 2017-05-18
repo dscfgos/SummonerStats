@@ -11,32 +11,32 @@ import com.dscfgos.summonerstats.dtos.LeagueTier;
 
 public class LeagueUtils
 {
-    public static int getTierResourceId(LeagueTier tier,String division)
+    public static int getTierResourceId(String tier,String division)
     {
         int result = R.drawable.provisional;
         if(tier != null)
         {
             switch (tier)
             {
-                case BRONZE:
+                case "BRONZE":
                     result = getBronzeImage(division);
                     break;
-                case SILVER:
+                case "SILVER":
                     result = getSilverImage(division);
                     break;
-                case GOLD:
+                case "GOLD":
                     result = getGoldImage(division);
                     break;
-                case PLATINUM:
+                case "PLATINUM":
                     result = getPlatinumImage(division);
                     break;
-                case DIAMOND:
+                case "DIAMOND":
                     result = getDiamondImage(division);
                     break;
-                case MASTER:
+                case "MASTER":
                     result = R.drawable.master;
                     break;
-                case CHALLENGER:
+                case "CHALLENGER":
                     result = R.drawable.challenger;
                     break;
             }
@@ -174,32 +174,32 @@ public class LeagueUtils
         return result;
     }
 
-    public static int getTierNameId(LeagueTier tier)
+    public static int getTierNameId(String tier)
     {
         int result = R.string.str_unranked;
         if(tier != null)
         {
             switch (tier)
             {
-                case BRONZE:
+                case "BRONZE":
                     result = R.string.str_bronze;
                     break;
-                case SILVER:
+                case "SILVER":
                     result = R.string.str_silver;
                     break;
-                case GOLD:
+                case "GOLD":
                     result = R.string.str_gold;
                     break;
-                case PLATINUM:
+                case "PLATINUM":
                     result = R.string.str_platinum;
                     break;
-                case DIAMOND:
+                case "DIAMOND":
                     result = R.string.str_diamond;
                     break;
-                case MASTER:
+                case "MASTER":
                     result = R.string.str_master;
                     break;
-                case CHALLENGER:
+                case "CHALLENGER":
                     result = R.string.str_challenger;
                     break;
             }

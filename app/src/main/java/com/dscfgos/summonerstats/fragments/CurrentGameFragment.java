@@ -80,10 +80,10 @@ public class CurrentGameFragment extends Fragment implements CurrentGameResponse
 
             CurrentGameManager leagueTask = new CurrentGameManager(this);
             leagueTask.execute(CurrentGameManager.GET_CURRENT_GAME,shard,summonerid,locale);
+            //leagueTask.execute(CurrentGameManager.GET_CURRENT_GAME,shard,summonerid,locale);
         }
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);

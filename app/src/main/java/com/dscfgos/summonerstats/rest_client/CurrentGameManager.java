@@ -4,9 +4,7 @@ import android.os.AsyncTask;
 
 import com.dscfgos.summonerstats.constants.URIConstants;
 import com.dscfgos.summonerstats.dtos.CurrentGameResult;
-import com.dscfgos.summonerstats.dtos.LeagueResult;
 import com.dscfgos.summonerstats.interfaces.CurrentGameResponseListener;
-import com.dscfgos.summonerstats.interfaces.LeagueEntryResponseListener;
 import com.dscfgos.utils.URLUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

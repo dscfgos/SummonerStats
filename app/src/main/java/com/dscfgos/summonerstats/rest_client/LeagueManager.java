@@ -1,13 +1,10 @@
 package com.dscfgos.summonerstats.rest_client;
 
 import android.os.AsyncTask;
-import android.widget.Toast;
 
 import com.dscfgos.summonerstats.constants.URIConstants;
-import com.dscfgos.summonerstats.dtos.LeagueResult;
-import com.dscfgos.summonerstats.dtos.SummonerResult;
+import com.dscfgos.summonerstats.dtos.LeaguePositionResult;
 import com.dscfgos.summonerstats.interfaces.LeagueEntryResponseListener;
-import com.dscfgos.summonerstats.interfaces.SummonerResponseListener;
 import com.dscfgos.utils.URLUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -77,15 +74,15 @@ public class LeagueManager extends AsyncTask<String, Void, String>
         super.onPostExecute(s);
         if(s != null && leagueEntryResponseListener != null)
         {
-            LeagueResult leagueResult = new Gson().fromJson(s , new TypeToken<LeagueResult>() {}.getType());
+            LeaguePositionResult leaguePositionResult = new Gson().fromJson(s , new TypeToken<LeaguePositionResult>() {}.getType());
 
-            leagueEntryResponseListener.getLeagueEntry(leagueResult);
+            leagueEntryResponseListener.getLeagueEntry(leaguePositionResult);
         }
         else
         {
-            LeagueResult leagueResult = new LeagueResult();
-            leagueResult.setResultCode("-1");
-            leagueEntryResponseListener.getLeagueEntry(leagueResult);
+            LeaguePositionResult leaguePositionResult = new LeaguePositionResult();
+            leaguePositionResult.setResultCode("-1");
+            leagueEntryResponseListener.getLeagueEntry(leaguePositionResult);
         }
     }
 }

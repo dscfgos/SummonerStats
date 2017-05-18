@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,10 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dscfgos.messaging.DSMessage;
 import com.dscfgos.messaging.MessageProcessor;
@@ -28,7 +25,7 @@ import com.dscfgos.summonerstats.constants.DSMessageTypes;
 import com.dscfgos.summonerstats.constants.ImagesUtils;
 import com.dscfgos.summonerstats.dtos.Summoner;
 import com.dscfgos.summonerstats.fragments.CurrentGameFragment;
-import com.dscfgos.summonerstats.fragments.HistoryFragment;
+import com.dscfgos.summonerstats.fragments.FragmentHistory;
 import com.dscfgos.summonerstats.fragments.LeagueFragment;
 import com.dscfgos.utils.ItemsManager;
 import com.dscfgos.utils.SharedPreferenceManager;
@@ -40,7 +37,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
                     LeagueFragment.OnFragmentInteractionListener,
-                    HistoryFragment.OnFragmentInteractionListener,
+                    FragmentHistory.OnFragmentInteractionListener,
                     CurrentGameFragment.OnFragmentInteractionListener,
                     MessageProcessor {
 
@@ -197,7 +194,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.mn_history)
         {
-            fragmentClass = HistoryFragment.class;
+            fragmentClass = FragmentHistory.class;
         }
         else if (id == R.id.mn_current_game)
         {

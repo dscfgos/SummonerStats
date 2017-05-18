@@ -3,10 +3,9 @@ package com.dscfgos.summonerstats.rest_client;
 import android.os.AsyncTask;
 
 import com.dscfgos.summonerstats.constants.URIConstants;
-import com.dscfgos.summonerstats.dtos.LeagueResult;
+import com.dscfgos.summonerstats.dtos.GamesHistoryResult;
 import com.dscfgos.summonerstats.dtos.RecentGamesResult;
-import com.dscfgos.summonerstats.interfaces.LeagueEntryResponseListener;
-import com.dscfgos.summonerstats.interfaces.RecentGamesResponseListener;
+import com.dscfgos.summonerstats.interfaces.GamesHistoryResponseListener;
 import com.dscfgos.utils.URLUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -16,20 +15,21 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
  * Created by David on 05-04-2017.
  */
 
-public class RecentGamesManager extends AsyncTask<String, Void, String>
+public class GamesHistoryManager extends AsyncTask<String, Void, String>
 {
     public static final String GET_RECENT_GAMES     = "GET_RECENT_GAMES";
 
-    private final RecentGamesResponseListener recentGamesResponseListener;
-    public RecentGamesManager(RecentGamesResponseListener recentGamesResponseListener)
+    private final GamesHistoryResponseListener gamesHistoryResponseListener;
+    public GamesHistoryManager(GamesHistoryResponseListener gamesHistoryResponseListener)
     {
-        this.recentGamesResponseListener = recentGamesResponseListener;
+        this.gamesHistoryResponseListener = gamesHistoryResponseListener;
     }
 
     @Override
@@ -74,17 +74,17 @@ public class RecentGamesManager extends AsyncTask<String, Void, String>
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        if(s != null && recentGamesResponseListener != null)
+        if(s != null && gamesHistoryResponseListener != null)
         {
-            RecentGamesResult recentGamesResult = new Gson().fromJson(s , new TypeToken<RecentGamesResult>() {}.getType());
+            GamesHistoryResult gamesHistoryResult = new Gson().fromJson(s , new TypeToken<GamesHistoryResult>() {}.getType());
 
-            recentGamesResponseListener.getRecentGames(recentGamesResult);
+            gamesHistoryResponseListener.getGamesHistory(gamesHistoryResult);
         }
         else
         {
-            RecentGamesResult recentGamesResult = new RecentGamesResult();
-            recentGamesResult.setResultCode("-1");
-            recentGamesResponseListener.getRecentGames(recentGamesResult);
+            GamesHistoryResult gamesHistoryResult = new GamesHistoryResult();
+            gamesHistoryResult.setResultCode("-1");
+            gamesHistoryResponseListener.getGamesHistory(gamesHistoryResult);
         }
     }
 }

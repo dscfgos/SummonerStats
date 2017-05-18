@@ -1,7 +1,6 @@
 package com.dscfgos.summonerstats.classes.renderer;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,9 +12,7 @@ import android.widget.TextView;
 
 import com.dscfgos.summonerstats.R;
 import com.dscfgos.summonerstats.classes.utils.LeagueUtils;
-import com.dscfgos.summonerstats.dtos.GameDTO;
-import com.dscfgos.summonerstats.dtos.League;
-import com.dscfgos.summonerstats.dtos.LeagueEntry;
+import com.dscfgos.summonerstats.dtos.HistoryGameDataDTO;
 
 import java.util.List;
 
@@ -25,7 +22,7 @@ import java.util.List;
 
 public class RecentGamesCardAdapter extends RecyclerView.Adapter<RecentGamesCardAdapter.DataHolder>
 {
-    private List<GameDTO> gameList ;
+    private List<HistoryGameDataDTO> gameList ;
     private Context context;
 
     public class DataHolder extends RecyclerView.ViewHolder
@@ -62,7 +59,7 @@ public class RecentGamesCardAdapter extends RecyclerView.Adapter<RecentGamesCard
         }
     }
 
-    public RecentGamesCardAdapter(Context context, List<GameDTO> gameList) {
+    public RecentGamesCardAdapter(Context context,  List<HistoryGameDataDTO> gameList) {
         this.context = context;
         this.gameList = gameList;
     }
@@ -78,11 +75,11 @@ public class RecentGamesCardAdapter extends RecyclerView.Adapter<RecentGamesCard
     @Override
     public void onBindViewHolder(DataHolder holder, int position)
     {
-        GameDTO game = gameList.get(position);
+        HistoryGameDataDTO game = gameList.get(position);
         if(game != null)
         {
             holder.txtMapType.setText(LeagueUtils.getMapNameById(context,game.getMapId()));
-            if(game.getStats().isWin())
+            if(game.isWin())
             {
                 holder.txtResult.setText(context.getResources().getString(R.string.str_win));
                 holder.pnlRecentCardBorder.setBackgroundColor(ContextCompat.getColor(context, R.color.color_win));
@@ -97,22 +94,22 @@ public class RecentGamesCardAdapter extends RecyclerView.Adapter<RecentGamesCard
 
 
             holder.txtChampionName.setText(game.getChampion().getName());
-            holder.txtKills.setText(String.valueOf(game.getStats().getChampionsKilled()));
-            holder.txtDeaths.setText(String.valueOf(game.getStats().getNumDeaths()));
-            holder.txtAssistes.setText(String.valueOf(game.getStats().getAssists()));
+            holder.txtKills.setText(String.valueOf(game.getKills()));
+            holder.txtDeaths.setText(String.valueOf(game.getDeaths()));
+            holder.txtAssistes.setText(String.valueOf(game.getAssists()));
 
-            holder.imgChampion.setImageResource(LeagueUtils.getDrawableResourceByName(context,game.getChampion().getImage().getFull()));
+            holder.imgChampion.setImageResource(LeagueUtils.getDrawableResourceByName(context,game.getChampion().getImage()));
 
-            holder.imgSpell1.setImageResource(LeagueUtils.getDrawableResourceByName(context,game.getSpell1Key()));
-            holder.imgSpell2.setImageResource(LeagueUtils.getDrawableResourceByName(context,game.getSpell2Key()));
+            holder.imgSpell1.setImageResource(LeagueUtils.getDrawableResourceByName(context,game.getSpell1Image()));
+            holder.imgSpell2.setImageResource(LeagueUtils.getDrawableResourceByName(context,game.getSpell2Image()));
 
-            holder.imgItem0.setImageResource(LeagueUtils.getItemResourceByName(context,game.getStats().getItem0()));
-            holder.imgItem1.setImageResource(LeagueUtils.getItemResourceByName(context,game.getStats().getItem1()));
-            holder.imgItem2.setImageResource(LeagueUtils.getItemResourceByName(context,game.getStats().getItem2()));
-            holder.imgItem3.setImageResource(LeagueUtils.getItemResourceByName(context,game.getStats().getItem3()));
-            holder.imgItem4.setImageResource(LeagueUtils.getItemResourceByName(context,game.getStats().getItem4()));
-            holder.imgItem5.setImageResource(LeagueUtils.getItemResourceByName(context,game.getStats().getItem5()));
-            holder.imgItem6.setImageResource(LeagueUtils.getItemResourceByName(context,game.getStats().getItem6()));
+            holder.imgItem0.setImageResource(LeagueUtils.getItemResourceByName(context,game.getItem0()));
+            holder.imgItem1.setImageResource(LeagueUtils.getItemResourceByName(context,game.getItem1()));
+            holder.imgItem2.setImageResource(LeagueUtils.getItemResourceByName(context,game.getItem2()));
+            holder.imgItem3.setImageResource(LeagueUtils.getItemResourceByName(context,game.getItem3()));
+            holder.imgItem4.setImageResource(LeagueUtils.getItemResourceByName(context,game.getItem4()));
+            holder.imgItem5.setImageResource(LeagueUtils.getItemResourceByName(context,game.getItem5()));
+            holder.imgItem6.setImageResource(LeagueUtils.getItemResourceByName(context,game.getItem6()));
 
         }
 }

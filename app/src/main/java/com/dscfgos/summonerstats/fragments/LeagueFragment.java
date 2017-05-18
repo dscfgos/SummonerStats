@@ -20,7 +20,8 @@ import com.dscfgos.summonerstats.constants.AppConstants;
 import com.dscfgos.summonerstats.constants.DSMessageTypes;
 import com.dscfgos.summonerstats.constants.ErrorsCode;
 import com.dscfgos.summonerstats.dtos.League;
-import com.dscfgos.summonerstats.dtos.LeagueResult;
+import com.dscfgos.summonerstats.dtos.LeaguePosition;
+import com.dscfgos.summonerstats.dtos.LeaguePositionResult;
 import com.dscfgos.summonerstats.dtos.Summoner;
 import com.dscfgos.summonerstats.interfaces.LeagueEntryResponseListener;
 import com.dscfgos.summonerstats.rest_client.LeagueManager;
@@ -88,12 +89,12 @@ public class LeagueFragment extends Fragment implements LeagueEntryResponseListe
     }
 
     @Override
-    public void getLeagueEntry(LeagueResult leagueEntryResult)
+    public void getLeagueEntry(LeaguePositionResult leagueEntryResult)
     {
         String resultCode = leagueEntryResult.getResultCode();
         if(resultCode.equals(ErrorsCode.NO_ERRORS))
         {
-            List<League> leagueList = leagueEntryResult.getLeagues().get(summoner.getId());
+            List<LeaguePosition> leagueList = leagueEntryResult.getLeaguePosition();
             LeagueCardAdapter adapter = new LeagueCardAdapter(this.getContext(),leagueList);
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
             rcyLeague.setLayoutManager(mLayoutManager);
